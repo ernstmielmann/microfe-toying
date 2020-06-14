@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+  </head>
+  <body>
+    <div id="react-app"></div>
+    <div id="vue-app"></div>
+    <button id="add-button">Add item</button>
+    <script src="./src/reactapp.js"></script>
+    <script src="./src/vueapp.js"></script>
+    <script>
+      const button = document.getElementById("add-button");
+
+      button.addEventListener("click", function() {
+        document.dispatchEvent(
+          new CustomEvent("pass-message", {
+            bubbles: true,
+            detail: { msg: "custom message", id: _.uniqueId() },
+          })
+        );
+      });
+    </script>
+  </body>
+</html>
